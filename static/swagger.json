@@ -1,0 +1,103 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Events API",
+      "version": "1.0.0"
+    },
+    "paths": {
+      "/healthcheck": {
+        "get": {
+          "description": "Checks whether Events API is ok",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful operation"
+            }
+          }
+        }
+      },
+      "/{id}": {
+        "get": {
+          "description": "Get an event given ID",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Event ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Event obtained successfully"
+            },
+            "400": {
+              "description": "Invalid event ID"
+            }
+          }
+        }
+      },
+      "/": {
+        "post": {
+          "description": "Saves an event",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Event data",
+              "in": "body",
+              "description": "Event data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/EventData"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Event saved successfully"
+            },
+            "400": {
+              "description": "Invalid event data"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "EventData": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "latitude": {
+            "type": "number",
+            "description": "Event location latitude"
+          },
+          "longitude": {
+            "type": "number",
+            "description": "Event location longitude"
+          },
+          "initial_date": {
+            "description": "Initial event date (format: dd/mm/yyyy hh:MM:ss)",
+            "type": "string"
+          },
+          "final_date": {
+            "description": "Final event date (format: dd/mm/yyyy hh:MM:ss)",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
