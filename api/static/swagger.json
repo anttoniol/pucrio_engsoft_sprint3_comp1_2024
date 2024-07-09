@@ -35,10 +35,13 @@
           ],
           "responses": {
             "200": {
-              "description": "Event obtained successfully"
+              "description": "Request sent successfully"
             },
             "400": {
-              "description": "Invalid event ID"
+              "description": "Invalid input data"
+            },
+            "500": {
+              "description": "Internal error when requesting"
             }
           }
         },
@@ -52,10 +55,17 @@
           ],
           "parameters": [
             {
+              "name": "id",
+              "in": "path",
+              "description": "Event ID",
+              "required": true,
+              "type": "integer"
+            },
+            {
               "name": "Event data",
               "in": "body",
               "description": "Event data",
-              "required": true,
+              "required": false,
               "schema": {
                 "$ref": "#/definitions/EventData"
               }
@@ -70,10 +80,13 @@
           ],
           "responses": {
             "200": {
-              "description": "Event updated successfully"
+              "description": "Request sent successfully"
             },
             "400": {
-              "description": "Invalid event data"
+              "description": "Invalid input data"
+            },
+            "500": {
+              "description": "Internal error when requesting"
             }
           }
         },
@@ -93,10 +106,13 @@
           ],
           "responses": {
             "200": {
-              "description": "Event deleted successfully"
+              "description": "Request sent successfully"
             },
             "400": {
-              "description": "Invalid event ID"
+              "description": "Invalid input data"
+            },
+            "500": {
+              "description": "Internal error when requesting"
             }
           }
         }
@@ -122,10 +138,13 @@
           ],
           "responses": {
             "200": {
-              "description": "Event obtained successfully"
+              "description": "Request sent successfully"
             },
             "400": {
-              "description": "Invalid event data"
+              "description": "Invalid input data"
+            },
+            "500": {
+              "description": "Internal error when requesting"
             }
           }
         },
@@ -150,10 +169,13 @@
           ],
           "responses": {
             "200": {
-              "description": "Event saved successfully"
+              "description": "Request sent successfully"
             },
             "400": {
-              "description": "Invalid event data"
+              "description": "Invalid input data"
+            },
+            "500": {
+              "description": "Internal error when requesting"
             }
           }
         }

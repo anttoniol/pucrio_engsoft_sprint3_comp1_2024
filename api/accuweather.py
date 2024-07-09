@@ -31,7 +31,7 @@ class Accuweather:
             location_data = json.loads(location_response.text)
             return location_data["Key"]
 
-        return None
+        raise Exception("Location key not found for the coordinates provided")
 
     def get_forecast_given_location_key(self, location_key):
         url = self.__properties.get_value(self.__section, "forecast_api")
@@ -53,13 +53,14 @@ class Accuweather:
 
         return None
 
-    def get_forecast_given_coordinates(self, lat, lon):
+    def get_weather_data_given_coordinates(self, lat, lon):
         location_key = self.get_location_key(lat, lon)
 
-        if location_key is not None:
-            return self.get_forecast_given_location_key(location_key)
+        return {
+            "forecast": self.get_forecast_given_location_key(location_key),
+            "location_key": location_key
+        }
 
-        return None
 
     def get_max_forecast_days(self):
         return self.__max_forecast_days
