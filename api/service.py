@@ -13,11 +13,16 @@ storage_api_url = properties.get_value("storage_api", "url")
 
 
 def get_weather_data(data, initial_date, get_forecast):
-    if get_forecast and date_utils.is_date_within_limit(initial_date, accuweather.get_max_forecast_days()):
-        weather_data = accuweather.get_weather_data_given_coordinates(data["latitude"], data["longitude"])
+    if get_forecast:
+        if date_utils.is_date_within_limit(initial_date, accuweather.get_max_forecast_days()):
+            weather_data = accuweather.get_weather_data_given_coordinates(data["latitude"], data["longitude"])
+            return {
+                "forecast": weather_data["forecast"],
+                "location_key": weather_data["location_key"]
+            }
         return {
-            "forecast": weather_data["forecast"],
-            "location_key": weather_data["location_key"]
+            "forecast": "Not available",
+            "location_key": data["location_key"]
         }
 
     if "forecast" in data:
@@ -94,7 +99,7 @@ def update(id, data, params=None):
             current_body[key] = value
 
     if params is not None and "update_forecast" in params:
-        update_forecast = params["update_forecast"]
+        update_forecast = bool(params["update_forecast"])
     else:
         update_forecast = False
 
