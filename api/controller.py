@@ -20,17 +20,29 @@ app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 @app.route("/healthcheck")
 def health_check():
     return jsonify({
-        "Message": "The Events API is running successfully"
+        "message": "The Events API is running successfully"
     })
 
 
 @app.route("/<id>", methods=["GET"])
-def get_event(id):
+def get_event_by_id(id):
 
-    event_data = service.get(id)
+    event_data = service.get_by_id(id)
 
     return jsonify({
-        "id": id
+        "message": "event"
+    })
+
+
+@app.route("/", methods=["GET"])
+def get_event_by_coordinates():
+    lat = request.args.get('latitude')
+    lon = request.args.get('longitude')
+
+    event_data = service.get_by_coordinates(lat, lon)
+
+    return jsonify({
+        "message": "event"
     })
 
 
@@ -40,7 +52,26 @@ def save_event():
     service.save(data)
 
     return jsonify({
-        "Message": "test"
+        "message": "event"
+    })
+
+
+@app.route("/<id>", methods=["PUT"])
+def update_event(id):
+    data = request.get_json()
+    service.update(id, data, request.args)
+
+    return jsonify({
+        "message": "event"
+    })
+
+
+@app.route("/<id>", methods=["DELETE"])
+def delete_event(id):
+    service.delete(id)
+
+    return jsonify({
+        "message": "event"
     })
 
 

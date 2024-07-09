@@ -41,9 +41,94 @@
               "description": "Invalid event ID"
             }
           }
+        },
+        "put": {
+          "description": "Updates an event",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Event data",
+              "in": "body",
+              "description": "Event data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/EventData"
+              }
+            },
+            {
+              "name": "update_forecast",
+              "type": "boolean",
+              "in": "query",
+              "description": "Flag to update forecast",
+              "required": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Event updated successfully"
+            },
+            "400": {
+              "description": "Invalid event data"
+            }
+          }
+        },
+        "delete": {
+          "description": "Delete an event given ID",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Event ID",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Event deleted successfully"
+            },
+            "400": {
+              "description": "Invalid event ID"
+            }
+          }
         }
       },
       "/": {
+        "get": {
+          "description": "Get an event by coordinates",
+          "parameters": [
+            {
+              "name": "latitude",
+              "type": "number",
+              "in": "query",
+              "description": "Event location latitude",
+              "required": true
+            },
+            {
+              "name": "longitude",
+              "type": "number",
+              "in": "query",
+              "description": "Event location longitude",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Event obtained successfully"
+            },
+            "400": {
+              "description": "Invalid event data"
+            }
+          }
+        },
         "post": {
           "description": "Saves an event",
           "consumes": [

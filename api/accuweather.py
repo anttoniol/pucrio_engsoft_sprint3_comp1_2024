@@ -12,11 +12,11 @@ class Accuweather:
     def __init__(self):
         self.__api_key = self.__properties.get_value(self.__section, "key")
 
-    def get_location_data(self, lat, long):
+    def get_location_data(self, lat, lon):
         url = self.__properties.get_value(self.__section, "location_api")
         params = {
             "apikey": self.__api_key,
-            "q": f"{lat},{long}"
+            "q": f"{lat},{lon}"
         }
 
         try:
@@ -24,8 +24,8 @@ class Accuweather:
         except Exception as ex:
             raise Exception("Error when getting location data: " + ex.__str__())
 
-    def get_location_key(self, lat, long):
-        location_response = self.get_location_data(lat, long)
+    def get_location_key(self, lat, lon):
+        location_response = self.get_location_data(lat, lon)
 
         if location_response.status_code == 200:
             location_data = json.loads(location_response.text)
@@ -53,8 +53,8 @@ class Accuweather:
 
         return None
 
-    def get_forecast_given_coordinates(self, lat, long):
-        location_key = self.get_location_key(lat, long)
+    def get_forecast_given_coordinates(self, lat, lon):
+        location_key = self.get_location_key(lat, lon)
 
         if location_key is not None:
             return self.get_forecast_given_location_key(location_key)
