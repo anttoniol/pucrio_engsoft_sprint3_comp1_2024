@@ -72,6 +72,7 @@ def get_by_id_raw(id):
     full_url = f"{storage_api_url}/{id}"
     return requests.get(full_url)
 
+
 def get_by_id(id):
     response = get_by_id_raw(id)
     return json.loads(response.text)["response"]["result"]

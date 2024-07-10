@@ -1,4 +1,4 @@
-from utils import date_utils
+from api.utils import date_utils
 
 
 def check_date_interval(initial_date, final_date):
