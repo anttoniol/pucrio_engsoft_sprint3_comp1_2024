@@ -1,10 +1,10 @@
 # PUC-RIO: especialização em Engenharia de Software
 ## Sprint 3
-## Componente A: agregador de eventos
+## Componente 1: agregador de eventos
 
 ### Descrição
 
-Este componente, com o auxílio do componente C, agrega eventos e também fornece uma breve previsão do tempo para 
+Este componente, com o auxílio do componente 2 (https://github.com/anttoniol/pucrio_engsoft_sprint3_comp2_2024), agrega eventos e também fornece uma breve previsão do tempo para 
 a semana da data inicial do evento, desde que o evento ocorra nos próximos cinco dias a partir do dia atual. Os dados de previsão do tempo
 são obtidos por meio da API da Accuweather.
 
