@@ -8,6 +8,9 @@ Este componente, com o auxílio do componente 2 (https://github.com/anttoniol/pu
 a semana da data inicial do evento, desde que o evento ocorra nos próximos cinco dias a partir do dia atual. Os dados de previsão do tempo
 são obtidos por meio da API da Accuweather.
 
+### Apresentação
+Link: https://vimeo.com/983358017?share=copy
+
 ### Instruções de uso
 
 #### API: Inicialização
