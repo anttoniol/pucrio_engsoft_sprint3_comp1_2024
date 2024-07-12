@@ -27,11 +27,13 @@ class Accuweather:
     def get_location_key(self, lat, lon):
         location_response = self.get_location_data(lat, lon)
 
-        if location_response.status_code == 200:
-            location_data = json.loads(location_response.text)
-            return location_data["Key"]
-
-        raise Exception("Location key not found for the coordinates provided")
+        try:
+            if location_response.status_code == 200 and location_response.text != "null":
+                location_data = json.loads(location_response.text)
+                return location_data["Key"]
+            raise Exception("Location key not found for the coordinates provided")
+        except Exception as ex:
+            raise Exception("Error when processing location key: " + ex.__str__())
 
     def get_forecast_given_location_key(self, location_key):
         url = self.__properties.get_value(self.__section, "forecast_api")

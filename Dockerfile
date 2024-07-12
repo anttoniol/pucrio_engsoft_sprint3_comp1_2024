@@ -9,15 +9,15 @@ EXPOSE 8000
 # Sets the working directory for following COPY and CMD instructions
 # Notice we haven’t created a directory by this name - this instruction
 # creates a directory with this name if it doesn’t exist
-WORKDIR /app
+WORKDIR /events_app
 
-COPY . /app
+COPY . /events_app
 
-ENV PYTHONPATH /app
+ENV PYTHONPATH /events_app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
 
 
 # Run app when the container launches
-CMD python3 /app/api/controller.py
+CMD python3 /events_app/api/controller.py
