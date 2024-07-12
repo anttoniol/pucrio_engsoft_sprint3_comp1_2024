@@ -30,6 +30,6 @@ são obtidos por meio da API da Accuweather.
 ##### Sem Dockerfile
 1. Na pasta do componente, criar um ambiente virtual, conforme explicado em https://www.alura.com.br/artigos/ambientes-virtuais-em-python?gclid=Cj0KCQjw6cKiBhD5ARIsAKXUdyaJkqNkWzEWgYdNgrCXhupl1irAxb_tmcN0RmpRj1htFv8RsRSQ9KwaAvmqEALw_wcB
 2. Executar o comando pip install -r requirements.txt, para instalar as bibliotecas necessárias
-3. No diretório "api", rodar a aplicação: python3 predictor_controller.py
+3. No diretório "api", rodar a aplicação: python3 controller.py
 4. Acessar o link http://localhost:8000/swagger, para fazer alguma requisição à API
 
