@@ -1,6 +1,7 @@
 from flask import Flask,jsonify,request
 from flask_swagger_ui import get_swaggerui_blueprint
 import service
+from waitress import serve
 
 SWAGGER_URL="/swagger"
 API_URL="/static/swagger.json"
@@ -91,4 +92,5 @@ def delete_event(id):
 
 
 if __name__=="__main__":
-    app.run(debug=True, host="0.0.0.0", port=8080)
+    #app.run(debug=True, host="0.0.0.0", port=8000)
+    serve(app, port=8000)

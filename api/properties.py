@@ -4,7 +4,7 @@ from configparser import ConfigParser, ExtendedInterpolation
 class Properties:
     def __init__(self):
         self.__config = ConfigParser(interpolation=ExtendedInterpolation())
-        self.__config.read('properties.ini')
+        self.__config.read('/app/properties.ini')
 
     def get_value(self, section, key):
         try:
